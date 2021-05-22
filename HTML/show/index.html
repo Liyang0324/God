@@ -39,6 +39,16 @@
         </div>
 
         <hr>
+        <div class="layui-carousel" id="test1">
+          <div carousel-item>
+            <div>条目1</div>
+            <div>条目2</div>
+            <div>条目3</div>
+            <div>条目4</div>
+            <div>条目5</div>
+          </div>
+        </div>
+        <hr>
         <div class="layui-row">
             <div class="layui-col-xs12 layui-col-md8" style="background:rebeccapurple">
               <div class="grid-demo grid-demo-bg1" id="div1" >移动：12/12、桌面：8/12</div>
@@ -51,5 +61,18 @@
             </div>
         </div>
     </div>
+    <!-- 轮番图 -->
+    <script>
+      layui.use('carousel', function(){
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+          elem: '#test1'
+          ,width: '100%' //设置容器宽度
+          ,arrow: 'always' //始终显示箭头
+          //,anim: 'updown' //切换动画方式
+        });
+      });
+      </script>
 </body>
 </html>
