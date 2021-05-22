@@ -1,0 +1,13 @@
+#top{
+    line-height: 60px; 
+    background-color: yellowgreen;
+    text-align: center;
+    color: white;
+}
+
+#div1,#div2{
+    background-color: #79C48C; 
+    line-height: 50px; 
+    text-align: center;
+    color: white;
+}

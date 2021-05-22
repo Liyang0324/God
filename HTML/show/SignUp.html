@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录界面</title>
+    <style type="text/css">
+        html{
+            height: 100%;
+        }
+        body {
+            /* width: 100%; */
+
+            /*颜色这个看个人喜好*/
+            /* background: darkslategrey; */
+            /*字体这个看个人喜好*/
+            font-family: sans-serif;
+            background-image: url(img/clubimg.jpg);
+            background-repeat: no-repeat;
+
+            background-size: 100% 100%;
+        }
+        .mainbody{
+            height: 440px;
+            width: 400px;
+        }
+        /*居中效果*/
+        .middle{
+            /*使左上角对应到父元素的中心*/
+            top: 50%;
+            left: 70%;
+            position: absolute;
+            /*向左向上偏移50%*/
+            transform: translate(-50%, -50%);
+            /* border: 0.5px red solid; */
+            /* box-shadow: red 1px; */
+        }
+        .form-box {
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            background: #00788b54;
+            border-radius: 40px;
+            border: 1px solid #309395b5;
+            box-shadow: 2px 2px 2px rgb(175 86 42 / 56%);
+           
+        }
+        .front {
+            transform: rotateY(0deg);
+        }
+
+        /* 将back旋转180度，背面朝向用户，我这边选y轴的 */
+        .back {
+            transform: rotateY(180deg);
+        }
+        /*文本框样式*/
+        .input-normal {
+            width: 220px;
+            height: 38px;
+            margin: 30px auto;
+            padding: 0;
+            text-align: center;
+            border-radius: 20px;
+            outline: none;
+            display: block;
+            transition: 0.3s;
+            border: 1px solid #e6e6e6;
+        }
+        /*验证码框*/
+        .input-normal1{
+            width: 125px;
+            height: 38px;
+            line-height: 38px;
+            margin: 30px auto;
+            padding: 0;
+            text-align: center;
+            border-radius: 20px 0px 0px 20px;
+            outline: none;
+            /*display: block;*/
+            transition: 0.3s;
+            border: 1px solid #e6e6e6;
+        }
+        .input-normal2{
+            width: 90px;
+            height: 38px;
+            line-height: 38px;
+            margin: 30px auto;
+            padding: 0;
+            text-align: center;
+            border-radius: 0px 20px 20px 0px;
+            outline: none;
+            /*display: block;*/
+            transition: 0.3s;
+            border: 1px solid #e6e6e6;
+        }
+        .input-normal1,.input-normal2{
+           position: relative;
+            top: -30px;
+            left: 90px;
+        }
+        /*提交按钮*/
+        .btn-submit1,.btn-submit2 {
+            width: 100px;
+            height: 36px;
+            margin: auto;
+            font-size: 18px;
+            text-align: center;
+            color: white;
+            border-radius: 20px;
+            display: block;
+            background: #e35efb30;
+            transition: 0.3s;
+        }
+        .btn-submit1{
+            margin-top: -36px;
+        }
+
+
+        .front,.back {
+            position: absolute;
+            /* 然后设置为背面朝向用户时不可见 */
+            backface-visibility: hidden;
+            /* 我觉得用linear顺滑一点 */
+            transition: 0.3s linear;
+        }
+
+        p {
+            margin: 15px auto;
+            padding: 0;
+            font-size: 16px;
+            color: white;
+            display: block;
+            text-align: center;
+        }
+        .astyle{
+            color: #02fff3;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        function signup(){
+            document.getElementById('front').style.transform = 'rotateY(180deg)';
+            document.getElementById('back').style.transform = 'rotateY(0deg)';
+        }
+        function login(){
+            document.getElementById('front').style.transform = 'rotateY(0deg)';
+            document.getElementById('back').style.transform = 'rotateY(180deg)';
+        }
+        window.onload = function() {
+            createCode();
+
+        }
+        function createCode() {
+            code = "";
+            var codeLength = 4; //验证码的长度
+            var checkCode = document.getElementById("checkCode");
+            var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R','S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数
+            for (var i = 0; i < codeLength; i++) { //循环操作
+                var charIndex = Math.floor(Math.random() * 36); //取得随机数的索引
+                code += random[charIndex]; //根据索引取得随机数加到code上
+            }
+            checkCode.value = code; //把code值赋给验证码
+        }
+    </script>
+</head>
+<body>
+<div class="mainbody middle">
+
+    <form action="LoginServlet" class="form-box front" id="front">
+        <div>
+            <h1 align="center">登录</h1>
+        </div>
+        <div>
+            <input class="input-normal" type="text" name="username" placeholder="用户名" />
+            <input class="input-normal" type="password" name="password" placeholder="密码" />
+            <input class="input-normal1" type="text" name="code" placeholder="验证码" /><input class="input-normal2"  id="checkCode" name="checkCode" type="text" placeholder=""/>
+            <button class="btn-submit1" type="submit">
+                登录
+            </button>
+        </div>
+        <div>
+            <p style="margin-top: 40px">如果你没有账户，请</p>
+            <p>点击这里
+                <a id="signup" class="astyle" onclick="signup();">注册</a>
+            </p>
+        </div>
+    </form>
+
+    <!-- 对的你没看错，上下两个表单基本上没区别，一个front，一个back -->
+    <form action="RegisterServlet" class="form-box back" id="back">
+        <div>
+            <h1 align="center">注册</h1>
+        </div>
+        <div>
+            <input class="input-normal" type="text" name="username" placeholder="用户名" />
+            <input class="input-normal" type="password" name="password" placeholder="密码" />
+            <button class="btn-submit2" type="submit">
+                注册
+            </button>
+        </div>
+        <div>
+            <p style="margin-top: 40px">有账户吗？你可以</p>
+            <p>点击这里
+                <a id="login" class="astyle"  onclick="login();">登录</a>
+            </p>
+        </div>
+    </form>
+</div>
+</body>
+</html>
