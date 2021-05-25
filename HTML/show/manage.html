@@ -25,29 +25,9 @@
 </head>
 
 <body>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-      <div class="layui-logo layui-hide-xs layui-bg-black">项目名称</div>
+  <div class="layui-layout layui-layout-admin" style="width: 900px;">
+    <div class="layui-header" style="background-color: #929ebed6;">
+      <div class="layui-logo layui-hide-xs layui-bg-black" style="background-color:#6777a5!important">项目名称</div>
       <!-- 头部区域（可配合layui 已有的水平导航） -->
       <ul class="layui-nav layui-layout-left">
         <!-- 移动端显示 -->
@@ -88,10 +68,10 @@
       </ul>
     </div>
 
-    <div class="layui-side layui-bg-black">
-      <div class="layui-side-scroll">
+    <div class="layui-side layui-bg-black" style="background-color: #0e6d44!important;">
+      <div class="layui-side-scroll"  style="background-color: #266c7a!important;">
         <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+        <ul class="layui-nav layui-nav-tree" lay-filter="test" style="background-color: #355982;">
           <li class="layui-nav-item layui-nav-itemed">
             <a class="" href="javascript:;">基本设置</a>
             <dl class="layui-nav-child">
@@ -117,7 +97,8 @@
 
     <div class="layui-body">
       <!-- 内容主体区域 -->
-      <div id="d1" class="text1" style="padding: 15px; ">
+      <!-- 账号信息 -->
+      <div id="d2" class="text1" style="padding: 15px; ">
         <h3 style="font-size: 24px;">账号信息</h3>
         <hr class="layui-border-orange">
         <h4 style="font-size: 18px;">登录账号</h4><br>
@@ -137,8 +118,89 @@
           style="background-color: #9e9e9ebf;">修改密码</button>
 
       </div>
+      <!-- 个人资料 -->
+      <div class="layui-tab layui-tab-card" id="d1">
+        <ul class="layui-tab-title">
+          <li class="layui-this" >基本信息</li>
+          <li>使用说明</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 610px;">
+          <div class="layui-tab-item layui-show">
+            <form class="layui-form" action="">
+              <label class="layui-form-label" style="font-weight: bold;">姓名</label>
+              <div class="layui-form-item"> 
+                <div class="layui-input-block">
+                  <input style="width: 190px;" type="text" name="name" lay-verify="title" autocomplete="off" placeholder="张蛋蛋" class="layui-input">
+                </div>
+              </div>
+              <label class="layui-form-label" style="font-weight: bold;">性别</label>
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                  <input type="radio" name="sex" value="男" title="男">
+                  <input type="radio" name="sex" value="女" title="女" checked="">
+                </div>
+              </div>
+              <label class="layui-form-label" style="font-weight: bold;">出生日期</label>
+              <div class="layui-form-item">
+                <div class="layui-inline">
+                  <div class="layui-input-inline" style="margin-left: 110px;" >
+                    <input type="text" class="layui-input" id="birthday" placeholder="yyyy-MM-dd">
+                  </div>
+                </div>
+              </div>
+              <label class="layui-form-label" style="font-weight: bold;">地址</label>
+              <div class="layui-form-item">
+                <div class="layui-input-inline" style="margin-left: 110px;">
+                  <select name="quiz1">
+                    <option value="">请选择省</option>
+                    <option value="浙江省" selected="">浙江省</option>
+                    <option value="江西省">江西省</option>
+                    <option value="福建省">福建省</option>
+                    <option value="陕西省">陕西省</option>
+                  </select>
+                </div>
+                <div class="layui-input-inline">
+                  <select name="quiz2">
+                    <option value="">请选择市</option>
+                    <option value="杭州">杭州</option>
+                    <option value="宁波" disabled="">宁波</option>
+                    <option value="温州">温州</option>
+                    <option value="温州">台州</option>
+                    <option value="温州">绍兴</option>
+                  </select>
+                </div>
+                <div class="layui-input-inline">
+                  <select name="quiz3">
+                    <option value="">请选择县/区</option>
+                    <option value="西湖区">西湖区</option>
+                    <option value="余杭区">余杭区</option>
+                    <option value="拱墅区">临安市</option>
+                  </select>
+                </div>
+                <div class="layui-form-mid layui-word-aux">123</div>
+              </div>
+              <label class="layui-form-label" style="font-weight: bold;">自我介绍</label>
+              <div class="layui-form-item layui-form-text">
+                <div class="layui-input-block">
+                  <textarea style="width: 590px;" placeholder="请输入内容" name="myself" class="layui-textarea"></textarea>
+                </div>
+              </div>
 
-      <div id="d2">12313</div>
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                  <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                  <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+              </div>
+            </form>
+             
+          </div>
+          <div class="layui-tab-item">
+            <label class="layui-form-label" style="width: 300px; font-weight: bold;">欢迎使用本系统，加入我们的大家庭</label>
+          </div>
+        </div>
+
+      </div>
       <div id="d3">4324</div>
       <div id="d4">9876543</div>
     </div>
@@ -165,12 +227,20 @@
       layer.prompt({
         formType: 1,
         value: '',
-        title: '请输入账号密码'
+        title: '请输入账号密码,确认修改'
       }, function (value, index, elem) {
         alert(value); //得到value
         layer.close(index);
       });
     };
+    layui.use('laydate', function(){
+      var laydate = layui.laydate;
+      
+      //执行一个laydate实例
+      laydate.render({
+        elem: '#test1' //指定元素
+      });
+    });
   </script>&nbsp;
 </body>
 
